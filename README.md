@@ -45,6 +45,20 @@ InterfaceComparator.diff_interfaces(a, b)
 #}]
 ```
 
+## Usage with minitest
+
+If you want to use it with minitest, please require helper:
+```ruby
+require 'interface_comparator/minitest'
+```
+
+Library will provide you with two new assertions:
+```ruby
+assert_equal_interfaces a, b
+refute_equal_interfaces a, b
+```
+
+Output in case of failure will be similar to those in diff_interfaces.
 
 ## Development
 
