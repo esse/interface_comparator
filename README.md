@@ -22,7 +22,7 @@ Or install it yourself as:
 require 'interface_comparator'
 # check if two objects has the same interface
 # including public methods list and their arity
-InterfaceComparator.interfaces_are_same?(a, b) # => true or false
+InterfaceComparator.same?(a, b) # => true or false
 
 # see detailed list of difference between interfaces
 # of two objects
