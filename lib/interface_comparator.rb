@@ -5,11 +5,11 @@ require 'interface_comparator/version'
 module InterfaceComparator
   # is the interface of this two objects are the same?
   def self.same?(a, b)
-    diff_interfaces(a, b).empty?
+    diff(a, b).empty?
   end
 
   # show me the difference between interface of these two objects
-  def self.diff_interfaces(a, b)
+  def self.diff(a, b)
     methods_diff = diff_methods(a, b)
     return methods_diff unless methods_diff.empty?
     arity_diff = methods_arity_diff(a, b)

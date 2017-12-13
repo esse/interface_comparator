@@ -26,7 +26,7 @@ InterfaceComparator.same?(a, b) # => true or false
 
 # see detailed list of difference between interfaces
 # of two objects
-InterfaceComparator.diff_interfaces(a, b)
+InterfaceComparator.diff(a, b)
 # if there are difference between methods
 # it will return them in aa array of hashes:
 #[{
@@ -58,7 +58,7 @@ assert_equal_interfaces a, b
 refute_equal_interfaces a, b
 ```
 
-Output in case of failure will be similar to those in diff_interfaces.
+Output in case of failure will be similar to those in diff.
 
 ## Development
 

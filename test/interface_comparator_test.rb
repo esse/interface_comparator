@@ -8,7 +8,7 @@ class InterfaceComparatorTest < Minitest::Test
   def test_correct_public_interface
     unique_public_methods = (InterfaceComparator.public_methods -
                             Module.public_methods).sort
-    assert_equal %i(same? diff_interfaces).sort,
+    assert_equal %i(same? diff).sort,
                  unique_public_methods
   end
 
@@ -30,7 +30,7 @@ class InterfaceComparatorTest < Minitest::Test
     a.instance_eval 'def new_method; end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal method_hash_factory(:new_method, true, false),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_difference_opposite_way
@@ -39,7 +39,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method; end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal method_hash_factory(:new_method, false, true),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference
@@ -49,7 +49,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method(a); end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, 0, 1),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference_opposite_way
@@ -59,7 +59,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method; end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, 1, 0),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference_with_args
@@ -69,7 +69,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method; end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, -1, 0),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference_with_args_opposite_way
@@ -79,7 +79,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method(*args); end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, 0, -1),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference_with_named_args
@@ -89,7 +89,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method; end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, 1, 0),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_difference_with_named_args_opposite_way
@@ -99,7 +99,7 @@ class InterfaceComparatorTest < Minitest::Test
     b.instance_eval 'def new_method(args:); end'
     assert !InterfaceComparator.same?(a, b)
     assert_equal arity_hash_factory(:new_method, 0, 1),
-                 InterfaceComparator.diff_interfaces(a, b)
+                 InterfaceComparator.diff(a, b)
   end
 
   def test_it_show_correct_method_arity_for_c_methods

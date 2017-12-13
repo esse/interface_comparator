@@ -4,7 +4,7 @@ module Minitest::Assertions
   #
   def assert_equal_interfaces(object_a, object_b)
     assert InterfaceComparator.same?(object_a, object_b),
-      "Interfaces are not the same: #{InterfaceComparator.diff_interfaces(object_a, object_b)}"
+      "Interfaces are not the same: #{InterfaceComparator.diff(object_a, object_b)}"
   end
 
   #
