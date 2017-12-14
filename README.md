@@ -22,11 +22,11 @@ Or install it yourself as:
 require 'interface_comparator'
 # check if two objects has the same interface
 # including public methods list and their arity
-InterfaceComparator.interfaces_are_same?(a, b) # => true or false
+InterfaceComparator.same?(a, b) # => true or false
 
 # see detailed list of difference between interfaces
 # of two objects
-InterfaceComparator.diff_interfaces(a, b)
+InterfaceComparator.diff(a, b)
 # if there are difference between methods
 # it will return them in aa array of hashes:
 #[{
@@ -58,7 +58,7 @@ assert_equal_interfaces a, b
 refute_equal_interfaces a, b
 ```
 
-Output in case of failure will be similar to those in diff_interfaces.
+Output in case of failure will be similar to those in diff.
 
 ## Development
 

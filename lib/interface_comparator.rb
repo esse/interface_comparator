@@ -4,12 +4,12 @@ require 'interface_comparator/version'
 # including public methods list and their arity
 module InterfaceComparator
   # is the interface of this two objects are the same?
-  def self.interfaces_are_same?(a, b)
-    diff_interfaces(a, b).empty?
+  def self.same?(a, b)
+    diff(a, b).empty?
   end
 
   # show me the difference between interface of these two objects
-  def self.diff_interfaces(a, b)
+  def self.diff(a, b)
     methods_diff = diff_methods(a, b)
     return methods_diff unless methods_diff.empty?
     arity_diff = methods_arity_diff(a, b)
